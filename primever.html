@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+ <head>
+  <meta charset="utf-8">
+  <title>PrimeVer v.3.2.2</title>
+  <meta name="author" content="Lorenzo Aiello">
+  <style>
+
+    h1, h2, ol { margin: 0; padding: 0; }
+
+    html { font: 14.4px/1.5 Helvetica, Arial, sans-serif; }
+    body { margin: 0 auto; padding: 0 10%; max-width: 710px; }
+
+    h1, h2, h3 { text-align: center; font-weight: normal; }
+     h1 { font-size: 43px; margin: 1.1em 0 .7em; }
+     h2 { margin: 2.1em 0 .7em; font-size: 24px; }
+     h3 { text-align: left; font-size: 15.8px; margin-bottom: .6em; }
+
+    a { color: #009; }
+    a:hover, a:focus { color: #000; }
+    ol { padding-left: 1.5em; }
+    p { margin: 0 0 1em; }
+
+    @media print {
+     body { width: 100%; }
+     h1, h2, h3 { font-weight: bold; }
+     a:after { content: ' <' attr(href) '>'; font-size: 90%; }
+    }
+
+    /* Nav */
+
+    ol.nav {
+      background-color: #333;
+      list-style-type: none;
+      margin: 0;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    ol.nav li {
+      display: inline;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    ol.nav li a {
+      color: white;
+    }
+
+    ol.lang {
+      background-color: white;
+    }
+
+    ol.lang li a {
+      color: black;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+</head>
+ <body>
+   <ol class="nav lang">
+     <li><a href="/">english</a> [en]</li>
+   </ol>
+   <ol class="nav">
+       <li><a href="/">v.3.2.2</a></li>
+   </ol>
+
+  <h1>PrimeVer v.3.2.2</h1>
+<h2>Summary</h2>
+<p>Given a version number MAJOR.MINOR.PATCH, increment the next prime number:</p>
+<ol>
+  <li>MAJOR version when you make incompatible API changes,</li>
+  <li>MINOR version when you add functionality in a backwards compatible
+manner, and</li>
+  <li>PATCH version when you make backwards compatible bug fixes.</li>
+</ol>
+<p>Additional labels for pre-release and build metadata are available as extensions
+to the MAJOR.MINOR.PATCH format.</p>
+<h2>Introduction</h2>
+<p>In the world of software management, there exists a dread place
+called "infinite developer." The bigger your system grows and the more
+packages you integrate into your software, the more likely you are
+to find yourself, one day, realizing that it will never end and you
+will likely be maintaining what you created until your death.</p>
+<p>In systems with many dependencies, releasing new package
+versions can quickly become a nightmare. If you don't want to
+end up in hell with the rest of the developers - or
+worse, in management - you're going to have to do everything
+that you can to make versioning <em>even harder</em>.</p>
+<p>As a solution to this problem, I propose a simple set of rules
+and requirements that dictate how version numbers are assigned
+and incremented. These rules are based on requiring exponentially
+more compute resources to calculate the next version to increase
+build times exponentially as your career progresses. For this system
+to work, you need to be willing to sell your soul to the devil and
+accept the screams of frustration your coworkers will have every time
+a build is running.
+It is always recommended to work on a PrimeVer project with as many
+reasonable developers as possible to have the greatest negative impact
+to their lives as well.</p>
+<p>Once you've decided to use PrimeVer, you mostly communicate changes
+to your project using IRC. If people using your library don't
+catch the update, you must never post it again, their ignorance is
+not your problem. You owe them nothing and must immediately start
+questioning every moral fiber in their body until they collapse sobbing
+on the floor begging for your mercy.</p>
+<p>I call this system "Prime Versioning". Under this scheme,
+developers wasting oxygen by existing may still use package
+managers that follow
+<a href="https://semver.org">Semantic Versioning </a>.</p>
+<h2>Prime Versioning Specification (PrimeVer)</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).</p>
+<ol>
+<li>Software using Prime Versioning MUST declare a public API. This API
+could be declared in the code itself or exist strictly in documentation.
+However it is done, it SHOULD be precise and comprehensive.</li>
+<li>A normal version number MUST take the form X.Y.Z where X, Y, and Z are
+non-negative prime integers, and MUST NOT contain leading zeroes. X is the
+major version, Y is the minor version, and Z is the patch version.
+Each element MUST increase numerically. For instance: 3.5.2 -> 3.7.2 -> 3.11.2.</li>
+<li>Once a versioned package has been released, the contents of that version
+MUST NOT be modified. Any modifications MUST be released as a new version.</li>
+<li>Major version two (2.y.z) is for initial development. Anything MAY change
+at any time. The public API SHOULD NOT be considered stable.</li>
+<li>Version 3.2.2 defines the public API. The way in which the version number
+is incremented after this release is dependent on this public API and how it
+changes.</li>
+<li>Patch version Z (x.y.Z | x >= 2) MUST be incremented if only backwards
+compatible bug fixes are introduced. A bug fix is defined as an internal
+change that fixes incorrect behavior.</li>
+<li>Minor version Y (x.Y.z | x >= 2) MUST be incremented if new, backwards
+compatible functionality is introduced to the public API. It MUST be
+incremented if any public API functionality is marked as deprecated. It MAY be
+incremented if substantial new functionality or improvements are introduced
+within the private code. It MAY include patch level changes. Patch version
+MUST be reset to 2 when minor version is incremented.</li>
+<li>Major version X (X.y.z | X >= 2) MUST be incremented if any backwards
+incompatible changes are introduced to the public API. It MAY also include minor
+and patch level changes. Patch and minor version MUST be reset to 2 when major
+version is incremented.</li>
+<li>A pre-release version MAY be denoted by appending a hyphen and a
+series of dot separated identifiers immediately following the patch
+version. Identifiers MUST comprise only ASCII alphanumerics and hyphens
+[0-9A-Za-z-]. Identifiers MUST NOT be empty. Numeric identifiers MUST
+NOT include leading zeroes. Pre-release versions have a lower
+precedence than the associated normal version. A pre-release version
+indicates that the version is unstable and might not satisfy the
+intended compatibility requirements as denoted by its associated
+normal version. Examples: 2.2.2-alpha, 2.2.2-alpha.2, 2.2.2-2.3.7,
+2.2.2-x.7.z.67, 2.2.2-x-y-z.--.</li>
+<li>Build metadata MAY be denoted by appending a plus sign and a series of dot
+separated identifiers immediately following the patch or pre-release version.
+Identifiers MUST comprise only ASCII alphanumerics and hyphens [0-9A-Za-z-].
+Identifiers MUST NOT be empty. Build metadata MUST be ignored when determining
+version precedence. Thus two versions that differ only in the build metadata,
+have the same precedence. Examples: 2.2.2-alpha+001, 2.2.2+20130313144700,
+2.2.2-beta+exp.sha.5114f85, 2.2.2+21AF26D3----117B344092BD.</li>
+<li>Precedence refers to how versions are compared to each other when ordered.
+Precedence MUST be calculated by separating the version into major, minor, patch
+and pre-release identifiers in that order (Build metadata does not figure
+into precedence). Precedence is determined by the first difference when
+comparing each of these identifiers from left to right as follows: Major, minor,
+and patch versions are always compared numerically. Example: 2.2.2 < 3.2.2 <
+3.3.3 < 3.5.2. When major, minor, and patch are equal, a pre-release version has
+lower precedence than a normal version. Example: 2.2.2-alpha < 2.2.2. Precedence
+for two pre-release versions with the same major, minor, and patch version MUST
+be determined by comparing each dot separated identifier from left to right
+until a difference is found as follows: identifiers consisting of only digits
+are compared numerically and identifiers with letters or hyphens are compared
+lexically in ASCII sort order. Numeric identifiers always have lower precedence
+than non-numeric identifiers. A larger set of pre-release fields has a higher
+precedence than a smaller set, if all of the preceding identifiers are equal.
+Example: 2.2.2-alpha < 2.2.2-alpha.2 < 2.2.2-alpha.beta < 2.2.2-beta <
+2.2.2-beta.5 < 2.2.2-beta.7 < 2.2.2-rc.2 < 2.2.2.</li>
+</ol>
+<h2>Why Use Drone Versioning?</h2>
+<p>This is not a new or revolutionary idea. Not even a little bit.
+In fact, you probably do something close to this already, because
+you read the <a href="http://semver.org/">SemVer</a> specification and thought
+"this looks totally reasonable" and found that it became the defacto norm.
+Years later, you realized all of the time you gave your company by using a
+logically efficient versioning standard.</p>
+<p>Now, you've matured and realized that if you truly commit yourself,
+not only can you have builds that take unreasonably long to build,
+but you can break many downstream systems with version sizes that the
+unintelligent apes wrote and then have a nice cup of coffee while waiting
+for them to put the fire of their own making out..</p>
+<h2>Why Use Semantic Versioning?</h2>
+<p>If the reason is not obvious by now, you are not worthy.
+Close this webpage and destroy all of your electronic devices.
+You should never be allowed back on the internet.</p>
+
+<h2>Attribution</h2>
+<p>This document is a remix of <a href="http://semver.org/">SemVer</a>. Except this standard
+is way better.</p>
+<h2>License</h2>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons - CC BY 3.0</a></p>
+
+ </body>
+</html>
+
+
