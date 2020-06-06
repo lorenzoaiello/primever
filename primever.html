@@ -73,12 +73,16 @@
   <li>MINOR version when you add functionality in a backwards compatible
 manner, and</li>
   <li>PATCH version when you make backwards compatible bug fixes.</li>
+  <li>PENTATONIC version when you make it into a song based on 5 notes of a given scale, 
+   all whilst simultaneously invoking otherworldly powers to explain to your 
+   Product Owner how this works with a series of regular expressions, slightly expired tea leaves, 
+   and your grandmother's collection of Iberian wild goat bones.</li>
 </ol>
 <p>Additional labels for pre-release and build metadata are available as extensions
-to the MAJOR.MINOR.PATCH format.</p>
+to the MAJOR.MINOR.PATCH.PENTATONIC format.</p>
 <h2>Introduction</h2>
 <p>In the world of software management, there exists a dread place
-called "infinite developement." The bigger your system grows and the more
+called "infinite development." The bigger your system grows and the more
 packages you integrate into your software, the more likely you are
 to find yourself, one day, realizing that it will never end and you
 will likely be maintaining what you created until your death.</p>
@@ -86,13 +90,14 @@ will likely be maintaining what you created until your death.</p>
 versions can quickly become a nightmare. If you don't want to
 end up in hell with the rest of the developers - or
 worse, in management - you're going to have to do everything
-that you can to make versioning <em>even harder</em>.</p>
+that you can to make versioning <em>even harder</em>.*</p>
 <p>As a solution to this problem, I propose a simple set of rules
 and requirements that dictate how version numbers are assigned
-and incremented. These rules are based on requiring exponentially
+and incremented (and/or sung from the mountaintops, as the case may be). 
+These rules are based on requiring exponentially
 more compute resources to calculate the next version to increase
-build times exponentially as your career progresses. For this system
-to work, you need to be willing to sell your soul to the devil and
+build times exponentially as your career progresses, and your vocal chords stretch. 
+For this system to work, you need to be willing to sell your soul to the devil and
 accept the screams of frustration your coworkers will have every time
 a build is running.
 It is always recommended to work on a PrimeVer project with as many
@@ -103,7 +108,8 @@ to your project using IRC. If people using your library don't
 catch the update, you must never post it again, their ignorance is
 not your problem. You owe them nothing and must immediately start
 questioning every moral fiber in their body until they collapse sobbing
-on the floor begging for your mercy.</p>
+on the floor begging for your mercy. Kind of like you already do for Product Owners, 
+  though one is clearly more deserving. But I digress. </p>
 <p>I call this system "Prime Versioning". Under this scheme,
 developers wasting oxygen by existing may still use package
 managers that follow
@@ -114,8 +120,11 @@ managers that follow
 interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).</p>
 <ol>
 <li>Software using Prime Versioning MUST declare a public API. This API
-could be declared in the code itself or exist strictly in documentation.
-However it is done, it SHOULD be precise and comprehensive.</li>
+could be declared in the code itself or exist strictly in documentation. Alternatively, 
+ it could live on solely as a spoken-word interpretive dance piece carried from 
+ generation to generation embedded in the genetic code of the unsuspecting courier, 
+ not unlike the blackout drunk returning from Cabo Spring Break 2016.
+However it is done, it SHOULD be precise and comprehensive (and melodic, if you're into that sort of thing).</li>
 <li>A normal version number MUST take the form X.Y.Z where X, Y, and Z are
 non-negative prime integers, and MUST NOT contain leading zeroes. X is the
 major version, Y is the minor version, and Z is the patch version.
@@ -191,7 +200,11 @@ for them to put the fire of their own making out..</p>
 <p>If you haven't figured this out by now, you are not worthy.
 Close this webpage and destroy all of your electronic devices.
 You should never be allowed back on the internet.</p>
-
+<p>* FOOTNOTE: The effort to obfuscate and confuse versioning will require some effort, but 
+ if we've learned anything at all from the well-worn methods of constantly changing pointing schemes to 
+ keep Product, Project, and Program managers out of our business and thoroughly confused (if it is even 
+ possible to make that more so), it is clear that the effort is very much worth it. 
+ The juice, as they say, is well worth the squeeze. 
 <h2>Attribution</h2>
 <p>This document is a remix of <a href="http://semver.org/">SemVer</a>. Except this standard
 is way better.</p>
